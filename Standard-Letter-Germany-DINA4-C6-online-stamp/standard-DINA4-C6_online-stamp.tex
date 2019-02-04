@@ -1,0 +1,67 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass[%
+  fontsize=12pt, % Schriftgröße
+  version=last%  % Neueste Version von KOMA-Skript verwenden
+]{scrlttr2}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{marvosym}       % Fuer Telefon-, Handy- und Briefsymbol
+
+%Pluszeichen im lauftext anpassen
+\newcommand{\plus}{\raisebox{.4\height}{\scalebox{.6}{+}}}
+
+%Einbinden von online Briefmarken
+\usepackage{picins}
+
+\KOMAoptions{
+	fromphone=false,
+	fromfax=false,
+	fromemail=false,
+	fromrule=afteraddress%  % Trennlinie unter dem Briefkopf
+}
+				
+\setkomavar{fromname}{Vorname Nachname}
+\setkomavar{fromaddress}{Straße 13 \\
+						 00000 Wohnort %\\
+						 Deutschland
+						 }
+						 
+\setkomavar{fromphone}[\Telefon ~]{\plus49\,40\,xxx\,xx\,xx}
+\setkomavar{fromfax}[\Mobilefone ~]{\plus49\,179\,xxx\,xx\,xx}
+\setkomavar{fromemail}[\Letter ~]{test@test.de}
+
+\setkomavar{subject}{Titel}
+\setkomavar{customer}{0000-XYZ-1222}
+
+\begin{document} 
+\begin{letter}{\vspace{-1cm}%move adress to fit Country inside envelop window
+
+%Online Briefmarke
+%trim: left - bottom - right - top
+%single stamp: 25mm 250mm 151mm 17mm
+%double stamp - first one: 25mm 250mm 149mm 14mm
+%double stamp - second one: ??
+\parpic[r]{\includegraphics[trim=25mm 250mm 149mm 14mm,clip]{stamp/test-stamp}}
+  Max Mustermann\\
+  Musterstraße 4\\
+  92833 Musterstadt}
+
+
+\opening{Sehr geehrte Damen und Herren,}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+\closing{Mit freundlichen Grüßen,}
+%\closing{Yours Faithfully,}
+%\closing{Med vÃ¤nlig hÃ¤lsning}
+
+\ps{P.S.}
+ Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+
+\encl{Anlage 1, Anlage 2}
+
+\end{letter}
+\end{document}

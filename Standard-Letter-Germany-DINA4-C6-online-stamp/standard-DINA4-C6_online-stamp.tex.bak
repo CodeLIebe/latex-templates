@@ -1,0 +1,68 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass[%
+  fontsize=12pt, % Schriftgröße
+  version=last%  % Neueste Version von KOMA-Skript verwenden
+]{scrlttr2}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{marvosym}       % Fuer Telefon-, Handy- und Briefsymbol
+
+%Pluszeichen im lauftext anpassen
+\newcommand{\plus}{\raisebox{.4\height}{\scalebox{.6}{+}}}
+
+%Einbinden von online Briefmarken
+\usepackage{picins}
+
+\KOMAoptions{
+	fromphone=false,
+	fromfax=false,
+	fromemail=false,
+	fromrule=afteraddress%  % Trennlinie unter dem Briefkopf
+}
+				
+\setkomavar{fromname}{Elisabeth Fughe}
+\setkomavar{fromaddress}{Goethestraße 138 \\
+						 63477 Maintal %\\
+						 %Deutschland
+						 }
+						 
+\setkomavar{fromphone}[\Telefon ~]{\plus49\,40\,xxx\,xx\,xx}
+\setkomavar{fromfax}[\Mobilefone ~]{\plus49\,179\,xxx\,xx\,xx}
+\setkomavar{fromemail}[\Letter ~]{arne@svensson.de}
+
+\setkomavar{subject}{Abmeldung eines Hundes}
+%\setkomavar{customer}{0815}
+
+\begin{document} 
+\begin{letter}{\vspace{-1cm}%move adress to fit Country inside envelop window
+
+%Online Briefmarke
+%trim: left - bottom - right - top
+%single stamp: 25mm 250mm 151mm 17mm
+%double stamp - first one: 25mm 250mm 149mm 14mm
+%double stamp - second one: ??
+\parpic[r]{\includegraphics[trim=25mm 250mm 149mm 14mm,clip]{stamp/test-stamp}}
+Stadtverwaltung Maintal\\
+  \textbf{FD Steuern}\\
+  Klosterhofstraße 4-6\\
+  63477 Maintal}
+
+
+\opening{Sehr geehrte Damen und Herren,}
+
+Anbei die Abmeldung meines Hundes von der Steuer aufgrund meines Umzugs.
+
+\closing{Mit freundlichen Grüßen,}
+%\closing{Yours Faithfully,}
+%\closing{Med vÃ¤nlig hÃ¤lsning}
+
+%\ps{P.S.}
+% Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+
+\encl{Abmeldeformular, Hundemarke}
+
+\end{letter}
+\end{document}
